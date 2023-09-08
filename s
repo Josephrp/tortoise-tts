@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from decouple import config
+import uvicorn
 import httpx
 
 app = FastAPI()
@@ -84,3 +85,8 @@ async def predict_from_live_recording(path_to_audio: str, split_in_chunks: bool 
         str: Response from the Gradio API.
     """
     return await make_gradio_request(path_to_audio, split_in_chunks, text, fn_index)
+
+
+
+if __name__ == "__fastapi__":
+    uvicorn.run("fastapi:app", host="0.0.0.0", port=8000, reload=True)
