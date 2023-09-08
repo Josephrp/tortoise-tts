@@ -88,5 +88,5 @@ async def predict_from_live_recording(path_to_audio: str, split_in_chunks: bool 
 
 
 
-if __name__ == "__fastapi__":
-    uvicorn.run("fastapi:app", host="0.0.0.0", port=8000, reload=True)
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
